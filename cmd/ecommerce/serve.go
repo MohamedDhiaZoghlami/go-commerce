@@ -22,7 +22,7 @@ func init() {
 		Short: "Connect to the storage and begin serving requests.",
 		Long:  ``,
 		Run: func(commandServe *cobra.Command, args []string) {
-			if err := serve(commandServe, args); err != nil {
+			if err := serve(); err != nil {
 				fmt.Fprintln(os.Stderr, err)
 				os.Exit(2)
 			}
@@ -31,7 +31,7 @@ func init() {
 	commandServe.Flags().StringVar(&argPort, "port", ":8080", "rest address to listen on")
 }
 
-func serve(cmd *cobra.Command, args []string) error {
+func serve() error {
 	logger := logrus.New()
 	s, err := server.NewServer(logger)
 	if err != nil {
