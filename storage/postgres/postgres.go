@@ -30,3 +30,7 @@ func Open(ctx context.Context, logger *logrus.Logger) (*conn, error) {
 	logger.Info("Successfully connected to the database!")
 	return &conn{db: db}, nil
 }
+
+func (c *conn) Close() error {
+	return c.db.Close()
+}
