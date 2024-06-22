@@ -21,7 +21,6 @@ func Open(ctx context.Context, logger *logrus.Logger) (*conn, error) {
 		logger.Error(err)
 		return nil, err
 	}
-	defer db.Close()
 	err = db.Ping()
 	if err != nil {
 		logger.Error(err)
